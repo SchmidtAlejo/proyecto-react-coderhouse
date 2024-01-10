@@ -1,0 +1,112 @@
+body {
+  background-color: #212121;
+  color: #fff;
+}
+
+header {
+  width: 100%;
+
+  button{
+    border: none !important;
+
+    &:focus{
+      box-shadow: none !important;
+    }
+  }
+
+  .navbar__cart {
+    color: rgb(255, 255, 255, 0.55);
+    justify-content: center;
+    display: flex;
+    gap: 8px;
+    padding: 8px 0;
+    div {
+      position: relative;
+    }
+    p {
+      @media screen and (min-width: 992px) {
+        display: none;
+      }
+    }
+    @media screen and (min-width: 992px) {
+      justify-content: end;
+    }
+
+    &:hover {
+      color: rgb(255, 255, 255, 0.75);
+    }
+  }
+
+  .bg-transparent {
+    transition: background-color 0.3s ease-in-out;
+    @media screen and (min-width: 992px) {
+      background-color: transparent !important;
+    }
+  }
+
+  .bg-body-tertiary {
+    transition: background-color 0.3s ease-in-out;
+  }
+  .logo {
+    img {
+      height: 54px;
+    }
+  }
+}
+
+footer {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  border-top: solid 1px var(--bs-secondary-border-subtle);
+  background-color: var(--bs-tertiary-bg);
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-direction: column;
+    margin-top: 32px;
+    @media screen and (min-width: 768px) {
+      flex-direction: row;
+      gap: 32px;
+      margin-top: 0;
+    }
+  }
+
+  img {
+    height: 120px;
+    @media screen and (min-width: 768px) {
+      justify-content: start;
+    }
+  }
+  ul {
+    border-left: none;
+    display: flex;
+    gap: 24px;
+    height: 128px;
+    padding-left: 16px;
+    align-items: center;
+    padding-left: 0;
+
+    @media screen and (min-width: 768px) {
+      padding-left: 16px;
+      border-left: solid 1px var(--bs-secondary-border-subtle);
+    }
+
+    li {
+      list-style: none;
+      a {
+        text-decoration: none;
+        color: var(--bs-highlight-color);
+        &:hover {
+          color: var(--bs-navbar-hover-color);
+        }
+        i {
+          font-size: 32px;
+        }
+      }
+    }
+  }
+}
