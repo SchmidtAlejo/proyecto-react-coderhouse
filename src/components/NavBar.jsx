@@ -1,7 +1,7 @@
 import logo from "../assets/logo-dark.webp"
 import CartWidget from "./CartWidget"
 
-export default function NavBar() {
+export default function Navbar() {
 
     return (
         <header className="position-fixed top z-3">
