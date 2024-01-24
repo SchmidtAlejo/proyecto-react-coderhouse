@@ -1,10 +1,52 @@
-export default function ItemListContainer({ greeting }) {
+import { useEffect, useState } from "react"
+import { NavLink, useParams } from "react-router-dom";
+import capitalLeterHelper from "../helpers/capitalLeterHelper";
+
+export default function ItemListContainer({ children }) {
+    const [products, setProducts] = useState([]);
+    const [title, setTitle] = useState("");
+    const { categoryId} = useParams();
+
+    useEffect(() => {
+        const url = categoryId===undefined? 'https://dummyjson.com/products' : `https://dummyjson.com/products/category/${categoryId}`
+        setTitle(categoryId===undefined? children : capitalLeterHelper(categoryId));
+
+        fetch(url)
+            .then(res => res.json())
+            .then((response) => {
+                setProducts(response.products);
+            });
+
+    }, [categoryId])
+
     return (
-        <div className="container">
-            <div className="alert alert-warning" role="alert">
-                <h4>Atención ⚠</h4>
-                {greeting}
+        <main className="container">
+            <h1 className='mb-4'>{title}</h1>
+            <div className="row justify-content-start mx-auto">
+                {
+                    products.map(product => (
+                        <NavLink 
+                        key={product.id} 
+                        className="px-1 col-sm-6 col-md-4 col-lg-3 product-card"
+                        to={`/item/${product.id}`}>
+                            <div
+                                key={product.id}
+                                className="card mb-3 bg-dark border-dark text-white"
+                                style={{ height: "300px" }}>
+                                <img
+                                    src={product.images[0]}
+                                    style={{ height: '200px', objectFit: 'contain' }}
+                                    className="card-img-top bg-white"
+                                    alt={"imagen de " + product.title} />
+                                <div className="card-body">
+                                    <h5 className="card-title">{product.title}</h5>
+                                    <p className="card-title">${product.price}</p>
+                                </div>
+                            </div>
+                        </NavLink>
+                    ))
+                }
             </div>
-        </div>
+        </main>
     )
 }

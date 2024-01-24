@@ -1,8 +1,8 @@
-import logo from "../assets/logo-dark.webp"
+import logo from "../assets/logo.webp"
 
 export default function Footer() {
     return (
-        <footer className="mt-5" data-bs-theme="dark">
+        <footer data-bs-theme="dark">
             <div className="container">
                 <a href="#">
                     <img src={logo} alt="logo" />

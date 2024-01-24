@@ -35,7 +35,7 @@
 
       &:hover {
         .home__sale__item__background {
-          opacity: .5;
+          opacity: 0.5;
         }
 
         p {
@@ -47,5 +47,14 @@
         }
       }
     }
+  }
+}
+
+.product-card {
+  text-decoration: none !important;
+  opacity: 1;
+  transition: opacity .3s ease-in-out;
+  &:hover {
+    opacity: .7;
   }
 }

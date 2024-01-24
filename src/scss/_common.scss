@@ -3,6 +3,12 @@ body {
   color: #fff;
 }
 
+.content{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 header {
   width: 100%;
 
@@ -36,22 +42,22 @@ header {
       color: rgb(255, 255, 255, 0.75);
     }
   }
-
-  .bg-transparent {
-    transition: background-color 0.3s ease-in-out;
-    @media screen and (min-width: 992px) {
-      background-color: transparent !important;
-    }
-  }
-
-  .bg-body-tertiary {
-    transition: background-color 0.3s ease-in-out;
-  }
+  
   .logo {
     img {
       height: 54px;
     }
   }
+
+
+  .categoty-list{
+    background-color: red !important;
+    position: relative;
+  }
+}
+
+main{
+  padding-top: 96px;
 }
 
 footer {
@@ -60,6 +66,7 @@ footer {
   align-items: center;
   border-top: solid 1px var(--bs-secondary-border-subtle);
   background-color: var(--bs-tertiary-bg);
+  margin-top: auto;
 
   .container {
     display: flex;

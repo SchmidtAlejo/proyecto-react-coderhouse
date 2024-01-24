@@ -1,2 +1,6 @@
-@import "scss/Common.scss";
-@import "scss/Home.scss";
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+@import "scss/common";
+@import "scss/home";
+@import "scss/itemDetail";

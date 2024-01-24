@@ -1,0 +1,94 @@
+.product-container {
+    .product-info-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 100%;
+  
+      .product-imagen-container {
+        margin: auto;
+        padding: 8px;
+        text-align: center;
+        flex-grow: 4;
+        background-color: white;
+        border-radius: 8px;
+        img {
+          width: 100%;
+          object-fit: contain;
+          max-height: 450px;
+          max-width: 600px;
+          @media screen and (max-width: 992px) {
+            max-height: 400px;
+            max-width: 400px;
+          }
+        }
+      }
+  
+      .product-data-container {
+        margin: 8px;
+        padding: 16px;
+        flex-grow: 1;
+        max-width: 366px;
+        @media screen and (max-width: 992px) {
+          max-width: none;
+        }
+  
+        .product-cantidad-container {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          align-items: center;
+  
+          p {
+            margin: auto 0;
+            margin-right: 8px;
+          }
+  
+          input {
+            width: 50px;
+            text-align: right;
+          }
+        }
+        .product-button-container {
+          margin: 16px 0px;
+          display: flex;
+          height: 48px;
+          gap: 8px;
+          button {
+            height: 100%;
+            &:first-child {
+              flex: 1;
+            }
+            &:last-child{
+              width: 48px;
+            }
+          }
+        }
+      }
+    }
+  
+    .product-descripcion-container {
+      padding: 16px;
+      margin: 8px;
+    }
+
+    .counter{
+        background-color: $gray-800;
+        width: 100%;
+        margin: auto;
+        height: 48px;
+
+        button{
+            background-color: $gray-800;
+            border: none;
+            color: $white;
+            width: 48px;
+            height: 100%;
+            transition: background-color .15s ease-in-out;
+
+            &:hover{
+                background-color: $gray-700;
+            }
+        }
+    }
+  }
