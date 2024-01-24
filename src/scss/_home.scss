@@ -53,8 +53,20 @@
 .product-card {
   text-decoration: none !important;
   opacity: 1;
-  transition: opacity .3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
   &:hover {
-    opacity: .7;
+    opacity: 0.7;
   }
+}
+
+.breadcrumb-item {
+  a {
+    text-decoration: none;
+    color: $blue-400;
+  }
+}
+
+.breadcrumb-item.active,
+.breadcrumb-item + .breadcrumb-item::before {
+  color: $white;
 }

@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { useParams } from "react-router-dom"
+import { NavLink, useParams } from "react-router-dom"
 import { Counter } from "../../components/Counter";
+import capitalLeterHelper from "../../helpers/capitalLeterHelper";
 
 export default function ItemDetailContainer() {
 
@@ -21,6 +22,13 @@ export default function ItemDetailContainer() {
             {
                 product !== null ?
                     <>
+                        <nav aria-label="breadcrumb">
+                            <ol className="breadcrumb">
+                                <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
+                                <li className="breadcrumb-item"><NavLink to={`/category/${product.category}`}>{capitalLeterHelper(product.category)}</NavLink></li>
+                                <li className="breadcrumb-item active" aria-current="page">{product.title}</li>
+                            </ol>
+                        </nav>
                         <div className="product-info-container">
                             <div className="product-imagen-container">
                                 <img src={product.images[0]} />
@@ -34,7 +42,7 @@ export default function ItemDetailContainer() {
                                         product.description
                                     }
                                 </p>
-                                <Counter max={product.stock}/>
+                                <Counter max={product.stock} />
                                 <div className="product-button-container">
                                     <button className="btn btn-primary">Buy</button>
                                 </div>

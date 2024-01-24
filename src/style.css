@@ -12021,6 +12021,16 @@ footer ul li a i {
   opacity: 0.7;
 }
 
+.breadcrumb-item a {
+  text-decoration: none;
+  color: #3d8bfd;
+}
+
+.breadcrumb-item.active,
+.breadcrumb-item + .breadcrumb-item::before {
+  color: #fff;
+}
+
 .product-container .product-info-container {
   display: flex;
   flex-direction: row;

@@ -5,11 +5,11 @@ import capitalLeterHelper from "../helpers/capitalLeterHelper";
 export default function ItemListContainer({ children }) {
     const [products, setProducts] = useState([]);
     const [title, setTitle] = useState("");
-    const { categoryId} = useParams();
+    const { categoryId } = useParams();
 
     useEffect(() => {
-        const url = categoryId===undefined? 'https://dummyjson.com/products' : `https://dummyjson.com/products/category/${categoryId}`
-        setTitle(categoryId===undefined? children : capitalLeterHelper(categoryId));
+        const url = categoryId === undefined ? 'https://dummyjson.com/products' : `https://dummyjson.com/products/category/${categoryId}`
+        setTitle(categoryId === undefined ? children : capitalLeterHelper(categoryId));
 
         fetch(url)
             .then(res => res.json())
@@ -21,14 +21,29 @@ export default function ItemListContainer({ children }) {
 
     return (
         <main className="container">
+            <nav aria-label="breadcrumb">
+                <ol className="breadcrumb">
+                    {
+                        categoryId === undefined ?
+                            <li className="breadcrumb-item active" aria-current="page">Home</li>
+                            :
+                            <nav aria-label="breadcrumb">
+                                <ol className="breadcrumb">
+                                    <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
+                                    <li className="breadcrumb-item active" aria-current="page">{capitalLeterHelper(categoryId)}</li>
+                                </ol>
+                            </nav>
+                    }
+                </ol>
+            </nav>
             <h1 className='mb-4'>{title}</h1>
             <div className="row justify-content-start mx-auto">
                 {
                     products.map(product => (
-                        <NavLink 
-                        key={product.id} 
-                        className="px-1 col-sm-6 col-md-4 col-lg-3 product-card"
-                        to={`/item/${product.id}`}>
+                        <NavLink
+                            key={product.id}
+                            className="px-1 col-sm-6 col-md-4 col-lg-3 product-card"
+                            to={`/item/${product.id}`}>
                             <div
                                 key={product.id}
                                 className="card mb-3 bg-dark border-dark text-white"
