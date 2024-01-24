@@ -21,7 +21,7 @@ export default function ItemDetailContainer() {
         <main className="container product-container">
             {
                 product !== null ?
-                    <>
+                    <div className="mt-4">
                         <nav aria-label="breadcrumb">
                             <ol className="breadcrumb">
                                 <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
@@ -50,7 +50,7 @@ export default function ItemDetailContainer() {
                         </div>
                         <div className="product-descripcion-container">
                         </div>
-                    </>
+                    </div>
                     : <></>
             }
         </main>
