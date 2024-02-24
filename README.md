@@ -1,8 +1,32 @@
-# React + Vite
+# ProyectoFinalReact
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Presentación
 
-Currently, two official plugins are available:
+Esta aplicación web representa un proyecto ficticio para ser presentado como entrega del Proyecto Final del curso de React de **Coderhouse**.
+La aplicación trata sobre un eCommerce de productos variados.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
+
+## Tecnologías y dependencias utilizadas
+
+En este proyecto se utilizaron las siguientes tecnologías:
+
+- HTML5
+- CSS
+- Javascipt
+- React
+- Bootstrap v5.3.1
+- Sass v1.69.5
+- Node.Js v18.18.0
+
+## Comandos
+
+Lista de comandos:
+
+- npm install para instalar las dependencias
+- npm run dev para iniciar la aplicacion en modo local
+- npm run sass:watch: Para que se puedan llevar los cambios hechos en los archivos .scss a los .css
+
+## Enlaces
+
+- Link a [Vercel](https://proyecto-react-coderhouse-ten.vercel.app "Vercel")
