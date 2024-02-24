@@ -4,6 +4,7 @@ import { NavLink, useParams } from "react-router-dom"
 import { Counter } from "../components/Counter";
 import capitalLeterHelper from "../helpers/capitalLeterHelper";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
+import Loading from "../components/Loading";
 
 export default function ItemDetailContainer() {
 
@@ -53,7 +54,9 @@ export default function ItemDetailContainer() {
                         <div className="product-descripcion-container">
                         </div>
                     </div>
-                    : <></>
+                    : <>
+                        <Loading>Cargando...</Loading>
+                    </>
             }
         </main>
     )
