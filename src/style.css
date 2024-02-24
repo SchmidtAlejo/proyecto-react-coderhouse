@@ -259,4 +259,11 @@ footer ul li a i {
   background-color: #495057;
 }
 
+.cart input {
+  background-color: #343b41;
+}
+.cart .text-danger:hover {
+  color: #cf2727 !important;
+}
+
 /*# sourceMappingURL=style.css.map */

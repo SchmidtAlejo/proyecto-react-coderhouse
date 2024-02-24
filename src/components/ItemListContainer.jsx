@@ -3,6 +3,7 @@ import { NavLink, useParams } from "react-router-dom";
 import capitalLeterHelper from "../helpers/capitalLeterHelper";
 import Banner from "./Banner";
 import ItemsSaleContainer from "./ItemsSaleContainer";
+import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore'
 
 export default function ItemListContainer({ children }) {
     const [products, setProducts] = useState([]);
@@ -10,15 +11,14 @@ export default function ItemListContainer({ children }) {
     const { categoryId } = useParams();
 
     useEffect(() => {
-        const url = categoryId === undefined ? 'https://dummyjson.com/products' : `https://dummyjson.com/products/category/${categoryId}`
-        setTitle(categoryId === undefined ? children : capitalLeterHelper(categoryId));
 
-        fetch(url)
-            .then(res => res.json())
-            .then((response) => {
-                setProducts(response.products);
-            });
+        const db = getFirestore();
 
+        const q = categoryId === undefined ? query(collection(db, 'products')) : query(collection(db, 'products'), where("category", "==", categoryId));
+
+        getDocs(q).then((snapshot) => {
+            setProducts(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        })
     }, [categoryId])
 
     return (
@@ -56,10 +56,10 @@ export default function ItemListContainer({ children }) {
                                 <div
                                     key={product.id}
                                     className="card mb-3 bg-dark border-dark text-white"
-                                    style={{ height: "300px" }}>
+                                    style={{ height: "350px" }}>
                                     <img
                                         src={product.images[0]}
-                                        style={{ height: '200px', objectFit: 'contain' }}
+                                        style={{ height: '200px', objectFit: 'cover' }}
                                         className="card-img-top bg-white"
                                         alt={"imagen de " + product.title} />
                                     <div className="card-body">

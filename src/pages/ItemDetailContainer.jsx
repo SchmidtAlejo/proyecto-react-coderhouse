@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { NavLink, useParams } from "react-router-dom"
-import { Counter } from "../../components/Counter";
-import capitalLeterHelper from "../../helpers/capitalLeterHelper";
+import { Counter } from "../components/Counter";
+import capitalLeterHelper from "../helpers/capitalLeterHelper";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 
 export default function ItemDetailContainer() {
 
@@ -10,11 +11,15 @@ export default function ItemDetailContainer() {
     const [product, setProduct] = useState(null);
 
     useEffect(() => {
-        fetch(`https://dummyjson.com/products/${id}`)
-            .then(res => res.json())
-            .then((res) => {
-                setProduct(res);
-            })
+
+        const db = getFirestore();
+
+        const ref = doc(db, "products", id);
+        getDoc(ref).then((snapshot) => {
+            if (snapshot.exists()) {
+                setProduct({ id: snapshot.id, ...snapshot.data() });
+            }
+        })
     }, []);
 
     return (
@@ -42,10 +47,7 @@ export default function ItemDetailContainer() {
                                         product.description
                                     }
                                 </p>
-                                <Counter max={product.stock} />
-                                <div className="product-button-container">
-                                    <button className="btn btn-primary">Buy</button>
-                                </div>
+                                <Counter product={product} />
                             </div>
                         </div>
                         <div className="product-descripcion-container">
